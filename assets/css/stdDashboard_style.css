@@ -11403,6 +11403,10 @@ p.lead {
   background-color: #0077b5;
 }
 
+.social-icons .social-icon-github:hover {
+  background-color: #00405d;
+}
+
 
 .dev-icons {
   font-size: 3rem;

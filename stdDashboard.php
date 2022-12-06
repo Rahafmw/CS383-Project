@@ -7,7 +7,7 @@
         <meta name="author" content="" />
         <title>Dashboard</title>
 
-        <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+        <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico"/>
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
         <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
         <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
@@ -60,7 +60,7 @@
                     <p class="lead mb-5">Determined and energetic Senior student studying (Web Engineering Track), working towards a BS in Computer Science. and working on projects to land an internship in the field of information technology.</p>
                     <div class="social-icons">
                         <a class="social-icon social-icon-LinkedIn" href="#!"><i class="fab fa-linkedin-in"></i></a>
-                        <a class="social-icon" href="#!"><i class="fab fa-github"></i></a>
+                        <a class="social-icon social-icon-github" href="#!"><i class="fab fa-github"></i></a>
                         <a class="social-icon social-icon-twitter" href="#!"><i class="fab fa-twitter"></i></a>
                         <a class="social-icon social-icon-facebook" href="#!"><i class="fab fa-facebook-f"></i></a>
                     </div>
