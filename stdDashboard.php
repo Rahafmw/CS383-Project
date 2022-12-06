@@ -21,7 +21,7 @@
     </head>
 
     <body>
-         <?php include("header.html"); ?>
+         <?php include("StuHeader.html"); ?>
            <div id="page-top">
 
         <!-- Navigation-->
@@ -33,11 +33,14 @@
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#edit">Edit Profile</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#education">Education</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#skills">Skills</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#awards">Awards</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#edit">Edit</a></li>
+
+                     <br>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#"><i class="bi bi-box-arrow-right px-2"></i>Log Out</a></li>
+                    
                 </ul>
             </div>
         </nav>
@@ -56,14 +59,91 @@
                     </div>
                     <p class="lead mb-5">Determined and energetic Senior student studying (Web Engineering Track), working towards a BS in Computer Science. and working on projects to land an internship in the field of information technology.</p>
                     <div class="social-icons">
-                        <a class="social-icon" href="#!"><i class="fab fa-linkedin-in"></i></a>
+                        <a class="social-icon social-icon-LinkedIn" href="#!"><i class="fab fa-linkedin-in"></i></a>
                         <a class="social-icon" href="#!"><i class="fab fa-github"></i></a>
-                        <a class="social-icon" href="#!"><i class="fab fa-twitter"></i></a>
-                        <a class="social-icon" href="#!"><i class="fab fa-facebook-f"></i></a>
+                        <a class="social-icon social-icon-twitter" href="#!"><i class="fab fa-twitter"></i></a>
+                        <a class="social-icon social-icon-facebook" href="#!"><i class="fab fa-facebook-f"></i></a>
                     </div>
                 </div>
             </section>
             <hr class="m-0" />
+                     <!-- Edit-->
+            <section class="resume-section" id="edit">
+                <div class="resume-section-content">
+                    <div class="row">
+        <div class="col-xl-4">
+            <!-- Profile picture card-->
+            <div class="card mb-4 mb-xl-0">
+                <div class="card-header">Profile Picture</div>
+                <div class="card-body text-center">
+                    <!-- Profile picture image-->
+                    <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="assets/img/profile.jpg" alt="..." />
+                    <!-- Profile picture help block-->
+                    <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
+                    <!-- Profile picture upload button-->
+                    <button class="btn btn-primary" type="button">Upload new image</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-8">
+            <!-- Account details card-->
+            <div class="card mb-4">
+                <div class="card-header">Account Details</div>
+                <div class="card-body">
+                    <form>
+                        <!-- Form Row-->
+                        <div class="row gx-3 mb-3">
+                            <!-- Form Group (first name)-->
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="inputFirstName">First name</label>
+                                <input class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" value="Danah">
+                            </div>
+                            <!-- Form Group (last name)-->
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="inputLastName">Last name</label>
+                                <input class="form-control" id="inputLastName" type="text" placeholder="Enter your last name" value="Alsahafi">
+                            </div>
+                        </div>
+                        <!-- Form Row        -->
+                        <div class="row gx-3 mb-3">
+                            <!-- Form Group (organization name)-->
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="inputOrgName">Organization name</label>
+                                <input class="form-control" id="inputOrgName" type="text" placeholder="Enter your organization name" value="Yanbu Industrial Collage">
+                            </div>
+                            <!-- Form Group (location)-->
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="inputLocation">Location</label>
+                                <input class="form-control" id="inputLocation" type="text" placeholder="Enter your location" value="Saudi Arabia, Yanbu">
+                            </div>
+                        </div>
+                        <!-- Form Group (email address)-->
+                        <div class="mb-3">
+                            <label class="small mb-1" for="inputEmailAddress">Email address</label>
+                            <input class="form-control" id="inputEmailAddress" type="email" placeholder="Enter your email address" value="IDANAH@EMAIL.COM">
+                        </div>
+                        <!-- Form Row-->
+                        <div class="row gx-3 mb-3">
+                            <!-- Form Group (phone number)-->
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="inputPhone">Phone number</label>
+                                <input class="form-control" id="inputPhone" type="tel" placeholder="Enter your phone number" value="(966) 545-121 310">
+                            </div>
+                            <!-- Form Group (birthday)-->
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="inputBirthday">Birthday</label>
+                                <input class="form-control" id="inputBirthday" type="text" name="birthday" placeholder="Enter your birthday" value="06/10/1988">
+                            </div>
+                        </div>
+                        <!-- Save changes button-->
+                        <button class="btn btn-primary" type="button">Save changes</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+ </div>
+  </section>
             <!-- Education-->
             <section class="resume-section" id="education">
                 <div class="resume-section-content">
@@ -165,90 +245,10 @@
                     </ul>
                 </div>
             </section>
-                <!-- Edit-->
-            <section class="resume-section" id="edit">
-                <div class="resume-section-content">
-                    <h2 class="mb-5">Edit Your profile</h2>
-                    <div class="row">
-        <div class="col-xl-4">
-            <!-- Profile picture card-->
-            <div class="card mb-4 mb-xl-0">
-                <div class="card-header">Profile Picture</div>
-                <div class="card-body text-center">
-                    <!-- Profile picture image-->
-                    <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="assets/img/profile.jpg" alt="..." />
-                    <!-- Profile picture help block-->
-                    <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
-                    <!-- Profile picture upload button-->
-                    <button class="btn btn-primary" type="button">Upload new image</button>
-                </div>
-            </div>
         </div>
-        <div class="col-xl-8">
-            <!-- Account details card-->
-            <div class="card mb-4">
-                <div class="card-header">Account Details</div>
-                <div class="card-body">
-                    <form>
-                        <!-- Form Row-->
-                        <div class="row gx-3 mb-3">
-                            <!-- Form Group (first name)-->
-                            <div class="col-md-6">
-                                <label class="small mb-1" for="inputFirstName">First name</label>
-                                <input class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" value="Danah">
-                            </div>
-                            <!-- Form Group (last name)-->
-                            <div class="col-md-6">
-                                <label class="small mb-1" for="inputLastName">Last name</label>
-                                <input class="form-control" id="inputLastName" type="text" placeholder="Enter your last name" value="Alsahafi">
-                            </div>
-                        </div>
-                        <!-- Form Row        -->
-                        <div class="row gx-3 mb-3">
-                            <!-- Form Group (organization name)-->
-                            <div class="col-md-6">
-                                <label class="small mb-1" for="inputOrgName">Organization name</label>
-                                <input class="form-control" id="inputOrgName" type="text" placeholder="Enter your organization name" value="Yanbu Industrial Collage">
-                            </div>
-                            <!-- Form Group (location)-->
-                            <div class="col-md-6">
-                                <label class="small mb-1" for="inputLocation">Location</label>
-                                <input class="form-control" id="inputLocation" type="text" placeholder="Enter your location" value="Saudi Arabia, Yanbu">
-                            </div>
-                        </div>
-                        <!-- Form Group (email address)-->
-                        <div class="mb-3">
-                            <label class="small mb-1" for="inputEmailAddress">Email address</label>
-                            <input class="form-control" id="inputEmailAddress" type="email" placeholder="Enter your email address" value="IDANAH@EMAIL.COM">
-                        </div>
-                        <!-- Form Row-->
-                        <div class="row gx-3 mb-3">
-                            <!-- Form Group (phone number)-->
-                            <div class="col-md-6">
-                                <label class="small mb-1" for="inputPhone">Phone number</label>
-                                <input class="form-control" id="inputPhone" type="tel" placeholder="Enter your phone number" value="(966) 545-121 310">
-                            </div>
-                            <!-- Form Group (birthday)-->
-                            <div class="col-md-6">
-                                <label class="small mb-1" for="inputBirthday">Birthday</label>
-                                <input class="form-control" id="inputBirthday" type="text" name="birthday" placeholder="Enter your birthday" value="06/10/1988">
-                            </div>
-                        </div>
-                        <!-- Save changes button-->
-                        <button class="btn btn-primary" type="button">Save changes</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
- </div>
-</section>
-</div>
-<!-- Bootstrap core JS-->
- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Core theme JS-->
- <script src="js/scripts.js"></script>
-
- </div>
-</body>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
 </html>

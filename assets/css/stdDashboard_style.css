@@ -25,7 +25,7 @@
 
   --bs-secondary: #6c757d;
   --bs-success: #198754;
-
+  --bs-primary: #4e73df;
   --bs-warning: #ffc107;
   --bs-danger: #dc3545;
   --bs-light: #f8f9fa;
@@ -65,7 +65,7 @@
   }
 }
 
-body .page-top{
+body {
   margin: 0;
   font-family: var(--bs-body-font-family);
   font-size: var(--bs-body-font-size);
@@ -7798,8 +7798,7 @@ textarea.form-control-lg {
 }
 
 .bg-primary {
-  --bs-bg-opacity: 1;
-  background-color: rgba(var(--bs-primary-rgb), var(--bs-bg-opacity)) !important;
+  background-color: #4e73df;
 }
 
 .bg-secondary {
@@ -11391,6 +11390,19 @@ p.lead {
 .social-icons .social-icon:hover {
   background-color: #0275d8;
 }
+
+.social-icons .social-icon-twitter:hover {
+  background-color: #55acee;
+}
+
+.social-icons .social-icon-facebook:hover {
+  background-color: #3b5998;
+}
+
+.social-icons .social-icon-LinkedIn:hover {
+  background-color: #0077b5;
+}
+
 
 .dev-icons {
   font-size: 3rem;
