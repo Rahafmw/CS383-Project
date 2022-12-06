@@ -1,0 +1,43 @@
+.DataTables .Back-Button{
+  border-radius: 4px;
+  background-color: #EEEEEE;
+  border: none;
+  color: black;
+  text-align: center;
+  font-size: 14px;
+  padding: 15px;
+  width: 230px;
+  transition: all 0.02s;
+  cursor: pointer;
+  margin: 5px;
+  }
+
+  .DataTables .Back-Button span{
+      cursor: pointer;
+      display: inline-block;
+      position: relative;
+      transition: 0.5s;
+    }
+    
+    .DataTables .Back-Button:after {
+      content: '\00bb';
+      position: absolute;
+      opacity: 0;
+      top: 0;
+      right: -20px;
+      transition: 0.2s;
+    }
+
+    .DataTables .Back-Button:hover{
+      background-color: #3B71CA;
+      color:#EEEEEE;
+    }
+    
+    .DataTables .Back-Button:hover span {
+      padding-right: 20px;
+    }
+    
+    .DataTables .Back-Button:hover span:after {
+      opacity: 1;
+      right: 0;
+    }
