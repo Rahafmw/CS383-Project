@@ -76,25 +76,70 @@
 
           <div class="col-lg-4">
             <div class="portfolio-info">
-              <h3>Training Information</h3>
+            <h3><span class="text-primary">Aramco</span>, Energy Company</h3>
               <ul>
-                <li><strong>Category</strong>: Company</li>
-                <li><strong>Program Registration</strong>: November 07, 2022  at eight o’clock </li>
-                <li><strong>Important Dates</strong>: The first day of the training for the program starts on: December 25, 2022 & January 16, 2023. </li>
-                <li><strong>Website URL</strong>: <a href="#">www.aramco.com</a></li>
+                <li><strong>Location:</strong> Dhahran, Saudi Arabia</li>
+                <li><strong>Overview:</strong> We are one of the world's largest integrated energy and chemicals companies, creating value across the hydrocarbon chain, and delivering societal and economic benefits to people and communities around the globe who rely on the vital energy we supply.</li>
+                <div class="row header-social-links align-items-center pt-4">
+                <li class="col"><strong>Social media:</strong>
+                  <a href="#" class="col linkedin"><i class="bi bi-linkedin"></i></a>
+                  <a href="#" class="col twitter"><i class="bi bi-twitter"></i></a>
+                  <a href="#" class="col twitter"><i class="bi bi-facebook"></i></a>
+                  <a href="#" class="col linkedin"><i class="bi bi-globe2"></i></a>
+                </div></li>
               </ul>
             </div>
-            <div class="portfolio-description">
-              <h2>The goal</h2>
-              <p>
-                Saudi Aramco provides internship opportunities for a limited number of outstanding Saudi diploma students studying in industrial/technical colleges and the Institute of Public Administration. This program aims to help participants gain practical experience and fulfill graduation requirements from their colleges or institutes. At the end of the program, the participants are evaluated to determine their total marks for the training hours required by the college or institute.
-              </p>
+
+            <div class="portfolio-info">
+              <h3>Training Information</h3>
+              <ul>
+                <li><strong>Registration Start Date:</strong> November 07, 2022  at 8:00 AM</li>
+                <li><strong>Registration End Date:</strong> November 15, 2022  at 4:00 PM </li>
+                <li><strong>Important Dates</strong>: The first day of the training for the program starts on: December 25, 2022 & January 16, 2023. </li>
+              </ul>
             </div>
 
-           <div class="mt-2 pt-2 col-lg-12 col-md-12 text-center">
-             <a href="#" class="team-btn align-middle">Apply</a>
-           </div>
           </div>
+
+          <!------Training program details-------->
+          <div class="p-4 container rounded bg-white">
+                    <div class="row portfolio-info">
+
+                    <div class="col"><div class="row">
+        
+                            <div class="col-12 mt-4 px-5">
+                            <h3>University Internship Program Registration</h3>
+                            </div>
+
+                        <div class="p-5">
+
+                            <b>The Goal:</b>
+                            <p>Saudi Aramco provides internship opportunities for a limited number of outstanding Saudi diploma students studying in industrial/technical colleges and the Institute of Public Administration. This program aims to help participants gain practical experience and fulfill graduation requirements from their colleges or institutes. At the end of the program, the participants are evaluated to determine their total marks for the training hours required by the college or institute.</p>
+
+                            <b>Eligibility:</b>
+                            <p>Applicants eligible to apply for the program are those required by their universities to undergo practical training prior to graduation. They are considered for the program based on the availability of slots and the following criteria:</p>
+                            <p>Applicants must have a minimum cumulative GPA of 2.00 out of 4 for technical majors and 2.50 out of 4 for nontechnical majors or equivalent. Priority is given to candidates with the highest GPAs.</p>
+                            <ul>
+                                <li>The duration of the training required by the school must be at least 8 weeks.</li>
+                                <li>Applicant must not have graduated from his/her university.</li>
+                                <li>Applicants must complete the training internship in full.</li>
+                                <li>Accepted students must not be enrolled in university classes/modules during their training period.</li>
+                            </ul>
+
+                            <b>Required Documents</b>
+                            <p>Candidates applying for the program need to provide the following documents:</p>
+                            <ul>
+                                <li>A copy of the Government ID.</li>
+                                <li>A copy of the latest official transcript.</li>
+                                <li>A letter from the university that shows the objectives and the length of the internship</li>
+                            </ul>
+                        </div>
+
+                        <div class="mt-2 pb-2 col-lg-12 col-md-12 text-center">
+                              <a href="#" class="team-btn align-middle">Apply</a>
+                            </div>
+                    </div>
+                </div>
 
         </div>
 
