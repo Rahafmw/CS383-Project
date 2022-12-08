@@ -216,7 +216,7 @@
                                     </div>
 
                                     <div class="row">
-                                        <div class="col-md-12 py-4"><label class="labels">Brief Description of the Program:</label><textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea></div>
+                                        <div class="col-md-12 py-4"><label class="labels">Important Dates:</label><textarea class="form-control" rows="3"></textarea></div>
                                        </div>
 
                                     <div class="row">
