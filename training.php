@@ -1,3 +1,6 @@
+<?php 
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,7 +39,7 @@
 <body>
 
   <!-- ======= Header ======= -->
-  <?php include("header.html"); ?>
+  <?php include("header.php"); ?>
   <!-- End Header -->
 
   <main id="main">

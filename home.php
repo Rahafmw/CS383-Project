@@ -1,6 +1,8 @@
+<?php 
+session_start(); 
+?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -30,7 +32,7 @@
 </head>
 
 <body>
-<?php include("header.html"); ?>
+<?php include("header.php"); ?>
 
   <!-- ======= Hero Section (At the top of the page) ======= -->
   <section id="hero">
@@ -40,8 +42,15 @@
           <div>
             <h1>COOP FINDER</h1>
             <h2>Where you got to know more about training program</h2>
-              <a href="signup.html" class="btn-get-started scrollto">Sign in</a>
-              <a href="login.html" class="btn-get-started scrollto">Sign up</a>
+            <?php
+            if(!isset($_SESSION['userid']))  //show this in case there is no session_id --> no user log-in
+            {               
+            ?>
+              <a href="login.html" class="btn-get-started scrollto">Sign in</a>
+              <a href="signup.html" class="btn-get-started scrollto">Sign up</a>
+            <?php
+            }
+            ?>
           </div>
         </div>
         <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="fade-left">

@@ -1,3 +1,11 @@
+<?php
+session_start();
+   if(!isset($_SESSION['userid'])) // If session is not set then redirect to Login Page
+   {
+     header("Location:login.html");  
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -21,7 +29,7 @@
     </head>
 
     <body>
-         <?php include("StuHeader.html"); ?>
+         <?php include("header.php"); ?>
            <div id="page-top">
 
         <!-- Navigation-->
