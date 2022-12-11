@@ -1,5 +1,6 @@
 <?php
 session_start();
+    $id = $_SESSION['userid'];
    if(!isset($_SESSION['userid'])) // If session is not set then redirect to Login Page
    {
      header("Location:..login.html");  
@@ -59,15 +60,69 @@ session_start();
     </head>
     <body class="bg-gray-100">
 
+            <?php
+
+        //When the form button is clicked 
+        if(array_key_exists('update_button', $_POST)) {
+                    Update_Profile();
+                }
+
+        //function to store the input data to the database 
+        function Update_Profile() 
+        {
+        
+            include("../dbconnection.php");
+        //if the connection is working   
+        // Taking all 8 values from the form data(input)
+        $Email =  $_REQUEST['Email'];
+        $Contact =  $_REQUEST['Contact'];
+        $Location =  $_REQUEST['Location'];
+        $Overview =  $_REQUEST['Overview'];
+        $LinkedIn = $_REQUEST['LinkedIn'];
+        $Twitter = $_REQUEST['Twitter'];
+        $Facebook = $_REQUEST['Facebook'];
+        $Website = $_REQUEST['Website'];
+                
+        $sql = "UPDATE organization
+        set org_email= '$Email', org_contact= '$Contact', org_place= '$Location', org_description= '$Overview', org_linkedin= '$LinkedIn', 
+        org_twitter= '$Twitter', org_facebook= '$Facebook', org_website= '$Website'
+        WHERE org_id='1'";
+
+        if(mysqli_query($conn, $sql)){
+            header('Location: Org_Dashboard.php');
+                } else{
+                    echo "ERROR: Hush! Sorry $sql. " 
+                        . mysqli_error($conn);
+                }
+        // Close connection
+        mysqli_close($conn);
+                
+        } //end function 
+
+?>
+
     <!-- Navigation -->
-    <?php // include("Header&Footer/header.php"); ?> 
+    <?php include("Header&Footer/header.php"); ?> 
            <div id="page-top">
+
+
+           <?php   
+             include("../dbconnection.php");
+             $query = "SELECT * FROM organization where org_id = 1";
+             $result = mysqli_query($conn , $query);
+            if(!$result || mysqli_num_rows($result) >  0)
+                {
+            if (is_iterable($result))
+                {
+             foreach($result as $rows) 
+             {
+             ?>
 
         <!-- Side bar Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
             <a class="navbar-brand js-scroll-trigger" href="#Profile">
-                <span class="d-block d-lg-none">Aramco Dashboard</span>
-                <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="https://pbs.twimg.com/profile_images/1438548612464644101/yhtvY1Fk_400x400.png" alt="Company Logo"/></span>
+                <span class="d-block d-lg-none"><?php echo $rows['org_name']; ?> Dashboard</span>
+                <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="<?php echo $rows['org_logo']; ?>" alt="Company Logo"/></span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
@@ -75,9 +130,6 @@ session_start();
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Edit">Edit Profile</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Post">Posted Opportunities</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Table">Applicants Requests</a></li>
-
-                    <br>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#"><i class="bi bi-box-arrow-right px-2"></i>Log Out</a></li>
                 </ul>
             </div>
         </nav>
@@ -85,23 +137,22 @@ session_start();
 
         <!-- Page Content-->
         <div class="container-fluid p-0">
-            
             <!-- About-->
             <section class="resume-section" id="Profile">
                 <div class="resume-section-content">
                     <h1 class="mb-0">
-                        <span class="text-primary">Aramco</span>, Energy Company</h1>
+                        <span class="text-primary"><?php echo $rows['org_name']; ?></span>, <?php echo $rows['org_subtype']; ?></h1>
                     
                     <div class="subheading mb-5">
-                         Saudi Arabia · Dhahran, +966 11 297 8775 ·
-                        <a class="text-primary">saempsa_webmaster@aramco.com</a>
+                        <?php echo $rows['org_place'];?>, <?php echo $rows['org_contact'];?> ·
+                        <a class="text-primary"><?php echo $rows['org_email']; ?></a>
                     </div>
-                    <p class="lead mb-5">We’re a leading producer of the energy and chemicals that drive global commerce and enhance the daily lives of people around the globe by continuing delivering an uninterrupted supply of energy to the world.</p>
+                    <p class="lead mb-5"><?php echo $rows['org_description']; ?></p>
                     <div class="social-icons">
-                        <a class="social-icon social-icon-LinkedIn" href="https://www.linkedin.com/company/aramco/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                        <a class="social-icon social-icon-twitter" href="https://twitter.com/Aramco" target="_blank"><i class="fab fa-twitter"></i></a>
-                        <a class="social-icon social-icon-facebook" href="https://www.facebook.com/aramco/" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                        <a class="social-icon" href="https://www.aramco.com/" target="_blank"><i class="fas fa-globe"></i></a>
+                        <a class="social-icon social-icon-LinkedIn" href="<?php echo $rows['org_linkedin']; ?>" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a class="social-icon social-icon-twitter" href="<?php echo $rows['org_twitter']; ?>" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a class="social-icon social-icon-facebook" href="<?php echo $rows['org_facebook']; ?>" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a class="social-icon" href="<?php echo $rows['org_website']; ?>" target="_blank"><i class="fas fa-globe"></i></a>
                     </div>
                 </div>
             </section>
@@ -115,19 +166,30 @@ session_start();
                     <div class="row">
                         <div class="col-md-4 border-right">
                             <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                                <img class="img-fluid mt-5" style="width: 120px; border-radius: 10px;" src="https://pbs.twimg.com/profile_images/1438548612464644101/yhtvY1Fk_400x400.png">
-                                <span class="pt-3 font-weight-bold">Aramco</span><span class="text-black-50">Energy Company</span></div>
+                                <img class="img-fluid mt-5" style="width: 120px; border-radius: 10px;" src="<?php echo $rows['org_logo']; ?>">
+                                <span class="pt-3 font-weight-bold"><?php echo $rows['org_name']; ?></span><span class="text-black-50"><?php echo $rows['org_subtype']; ?></span></div>
                         </div>
                         <div class="col-md-8">
                             <div class="p-3 py-5">
                                 <div class="row mt-3">
-                                    <form action="#">
-                                    <div class="col-md-12 py-2"><label class="labels">Email:</label><input type="email" class="form-control" placeholder="saempsa_webmaster@aramco.com" value=""></div>
-                                    <div class="col-md-12 py-2"><label class="labels">Contact Number:</label><input type="text" class="form-control" placeholder="+966 11 297 8775" value=""></div>
-                                    <div class="col-md-12 py-2"><label class="labels">Location:</label><input type="text" class="form-control" placeholder="Dhahran, Saudi Arabia" value=""></div>
-                                    <div class="col-md-12 py-2"><label class="labels">Website:</label><input type="text" class="form-control" placeholder="https://www.aramco.com/" value=""></div>
+                                    <form method="post">
+                                    <div class="col-md-12 py-2"><label class="labels">Email:</label><input name="Email" type="email" class="form-control" value="<?php echo $rows['org_email'];?>"></div>
+                                    <div class="col-md-12 py-2"><label class="labels">Contact Number:</label><input name="Contact" type="text" class="form-control" value="<?php echo $rows['org_contact'];?>"></div>
+                                    <div class="col-md-12 py-2"><label class="labels">Location:</label><input name="Location" type="text" class="form-control" value="<?php echo $rows['org_place'];?>"></div>
+                                    <div class="col-md-12 py-2"><label class="labels">Overview:</label><textarea name="Overview" class="form-control" rows="3"><?php echo $rows['org_description'];?></textarea></div>
+                                    
+                                    <div class="row px-3">
+                                    <div class="d-sm-flex align-items-center">
+                                    <h3 class="h3 pt-5 text-gray-800">Social Media:</h3>
+                                    </div><hr>
+                                    <div class="col-md-6 py-2"><label class="labels">LinkedIn:</label><input name="LinkedIn" type="text" class="form-control" value="<?php echo $rows['org_linkedin'];?>" ></div>
+                                    <div class="col-md-6 py-2"><label class="labels">Twitter:</label><input name="Twitter" type="text" class="form-control" value="<?php echo $rows['org_twitter'];?>"></div>
+                                    <div class="col-md-6 py-2"><label class="labels">Facebook:</label><input name="Facebook" type="text" class="form-control" value="<?php echo $rows['org_facebook'];?>"></div>
+                                    <div class="col-md-6 py-2"><label class="labels">Website:</label><input name="Website" type="text" class="form-control" value="<?php echo $rows['org_website'];?>"></div>
+                                    </div>
+
                                 </div>
-                                <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Update Profile</button></div>
+                                <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit" name="update_button">Update Profile</button></div>
                             </form>
                         </div>
                         </div>
@@ -136,6 +198,11 @@ session_start();
                 </div>
             </section>
             <hr class="m-0" />
+            <?php
+            }
+          }
+        }
+      ?>
 
 
             <!-- Posted Opportunities-->
@@ -144,58 +211,64 @@ session_start();
                 <div class="row">
                     <div class="col">
                     <!-- Page Heading -->
-                <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <span></span> <!--empty spam for changing the align for button-->
+                    <div class="row">
+                    <div class="d-flex justify-content-end mb-4">
                     <a href="#NewPost" class="mt-1 btn btn-primary">
                         <span class="icon text-white-50 px-2">
                             <i class="text-white bi bi-plus-square"></i>
                         </span>
                         <span class="text">Post New Opportunity</span>
                     </a>
-                </div>
-                </div>
-                <div class="container rounded bg-white">
-                    <div class="row">
-                        
-                        <div class="col-6 col-sm-6 col-md-4 col-lg-2 col-xl-2">
-                        <img class="img-fluid p-4" style="width: 170px; border-radius: 10px;" src="https://pbs.twimg.com/profile_images/1438548612464644101/yhtvY1Fk_400x400.png">
-                        </div>
-                        
-                        <div class="col"><div class="row">
-        
-                            <div class="col-12 mt-4 justify-content-between d-flex">
-                            <h3>University Internship Program Registration</h3>
-                            <div class="mr-2">
-                                <a href="#"><i class="p-2 bi bi-pencil-square text-secondary"></i></a>
-                                <a href="#"><i class="p-2 bi bi-trash text-danger"></i></a>
-                                </div>
-                            </div>
-
-                        <span class ="col">Application Start Date: 04 Dec, 2022 - 8:00AM</span>
-
-                        </div></div></div>
-
-                        <div class="p-5">
-                            <b>Eligibility:</b>
-                            <p>Applicants eligible to apply for the program are those required by their universities to undergo practical training prior to graduation. They are considered for the program based on the availability of slots and the following criteria:</p>
-                            <p>Applicants must have a minimum cumulative GPA of 2.00 out of 4 for technical majors and 2.50 out of 4 for nontechnical majors or equivalent. Priority is given to candidates with the highest GPAs.</p>
-                            <ul>
-                                <li>The duration of the training required by the school must be at least 8 weeks.</li>
-                                <li>Applicant must not have graduated from his/her university.</li>
-                                <li>Applicants must complete the training internship in full.</li>
-                                <li>Accepted students must not be enrolled in university classes/modules during their training period.</li>
-                            </ul>
-
-                            <b>Required Documents</b>
-                            <p>Candidates applying for the program need to provide the following documents:</p>
-                            <ul>
-                                <li>A copy of the Government ID.</li>
-                                <li>A copy of the latest official transcript.</li>
-                                <li>A letter from the university that shows the objectives and the length of the internship</li>
-                            </ul>
-                        </div>
                     </div>
                 </div>
+                </div>
+                <?php
+
+                if (isset($_GET['post_id'])){
+                    $id = $_GET['post_id'];
+                    $delete = mysqli_query($conn, "DELETE FROM `post` WHERE `post_id`='$id'");
+                }
+                $select = "SELECT * FROM `post`";
+                $query = mysqli_query($conn,$select);
+                $num = mysqli_num_rows($query);
+
+                if($num>0){
+                    while($result=mysqli_fetch_assoc($query)){
+                        
+                 ?>
+                <div class="row py-4">
+                <div class="container rounded bg-white">
+                    <div class="row">
+                        <div class="col"><div class="row">
+        
+                        <div class="offset-1 col-11 mt-4 justify-content-between d-flex">
+                            <h3><?php echo $result['post_title'] ?></h3>
+                            <div class="mr-2">
+                                <a href="#"><i class="p-2 bi bi-pencil-square text-secondary"></i></a>
+                                <?php echo "<a href='Org_Dashboard.php?post_id=".$result['post_id']."'><i class='p-2 bi bi-trash text-danger'></i></a>";?>
+                            </div>
+                        </div>
+
+                        <div class ="offset-1 col-4">Application Start Date: <?php echo $result['post_sdate'] ?></div>
+
+                        </div></div></div>
+                        <hr>
+                        <div class="p-5">
+                        <?php echo $result['post_info'] ?>
+                    </div>
+                </div>
+                </div>
+                <?php
+                   }
+                }
+                else
+                {
+                    echo "</div><h3 class='row offset-3'>No Date Found</h3>";
+                }
+
+                ?>
+            </div>
+                
             </section>
             <hr class="m-0"/>
 
@@ -209,21 +282,55 @@ session_start();
                     <h1 class="h3 pt-5 ml-4 text-gray-800">Create new Post</h1>
                 </div><hr>
                 
+                <?php
 
+                //When the form button is clicked 
+                if(array_key_exists('NewPost_button', $_POST)) {
+                            Create_newPost();
+                        }
+
+                //function to store the input data to the database 
+                function Create_newPost() 
+                {
+
+                    include("../dbconnection.php");
+                //if the connection is working   
+                // Taking all 5 values from the form data(input)
+                $Title =  $_REQUEST['Title'];
+                $Reg_Start =  $_REQUEST['Reg_Start'];
+                $Reg_End =  $_REQUEST['Reg_End'];
+                $Imp_date =  $_REQUEST['Imp_date'];
+                $editor = $_REQUEST['editor1'];
+                        
+                $sql = "INSERT INTO post (post_title, post_sdate, post_edate, post_impdate, post_info) 
+                VALUES ('$Title', '$Reg_Start', '$Reg_End', '$Imp_date', '$editor')";
+
+                if(mysqli_query($conn, $sql)){
+                    header('Location: Org_Dashboard.php');
+                        } else{
+                            echo "ERROR: Hush! Sorry $sql. " 
+                                . mysqli_error($conn);
+                        }
+                // Close connection
+                mysqli_close($conn);
+                        
+                } //end function 
+
+                ?>
                 <!--Start Page Contents-->
                 <div class="container rounded px-5 py-4">
-                                <form action="#">
+                                <form method="post">
                                     <div class="row">
-                                        <div class="col-md-12 pb-4"><label class="labels">Title:</label><input type="text" class="form-control" placeholder="Enter Post Title" value=""></div>
+                                        <div class="col-md-12 pb-4"><label class="labels">Title:</label><input name="Title" type="text" class="form-control" placeholder="Enter Post Title"></div>
                                     </div>
 
                                     <div class="row">
-                                        <div class="col-md-6 py-2"><label class="labels">Registration Start Date:</label><input type="date" class="form-control" placeholder="first name" value=""></div>
-                                        <div class="col-md-6 py-2"><label class="labels">Registration End Date:</label><input type="date" class="form-control" value="" placeholder="surname"></div>
+                                        <div class="col-md-6 py-2"><label class="labels">Registration Start Date:</label><input name="Reg_Start" type="date" class="form-control"></div>
+                                        <div class="col-md-6 py-2"><label class="labels">Registration End Date:</label><input name="Reg_End" type="date" class="form-control"></div>
                                     </div>
 
                                     <div class="row">
-                                        <div class="col-md-12 py-4"><label class="labels">Important Dates:</label><textarea class="form-control" rows="3"></textarea></div>
+                                        <div class="col-md-12 py-4"><label class="labels">Important Dates:</label><textarea name="Imp_date" class="form-control" rows="3"></textarea></div>
                                        </div>
 
                                     <div class="row">
@@ -235,7 +342,7 @@ session_start();
                                             </script>
                                         </div>
                                     </div>
-                                    <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Post the Opportunity</button></div>
+                                    <div class="mt-5 text-center"><button class="btn btn-primary profile-button" name="NewPost_button" type="submit">Post the Opportunity</button></div>
                                 </form>
                             </div>
                             </div>

@@ -45,10 +45,6 @@ session_start();
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#education">Education</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#skills">Skills</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#awards">Awards</a></li>
-
-                     <br>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#"><i class="bi bi-box-arrow-right px-2"></i>Log Out</a></li>
-                    
                 </ul>
             </div>
         </nav>
