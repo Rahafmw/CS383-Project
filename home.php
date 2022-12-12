@@ -106,11 +106,11 @@ session_start();
 
         <div class="row" data-aos="zoom-in">
           <div class="col-lg-9 text-center text-lg-start">
-            <h3>Don't have a CV </h3>
-            <p>To apply for a coop training you'll need a CV which you can use to apply for roles at Co-op and other organisations. We will help you to create one! </p>
+            <h3>CO-Finder Users live chat!</h3>
+            <p>Explore </p>
           </div>
           <div class="col-lg-3 cta-btn-container text-center">
-            <a class="cta-btn align-middle" href="#">Find out</a> <!-- not workin yet -->
+            <a class="cta-btn align-middle" href="ChatApp/index.php">Start the live chat!</a> <!-- not workin yet -->
           </div>
         </div>
 
@@ -176,7 +176,7 @@ session_start();
               </div>
             </div>
           </div>>
-
+ 
         </div>
         <div class="row">
         <div class="mt-2 pt-2 col-lg-12 col-md-12 text-center">

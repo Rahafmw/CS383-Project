@@ -20,7 +20,8 @@ session_start();
         <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
         <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
         <link href="assets/css/stdDashboard_style.css" rel="stylesheet">
-         <meta charset="utf-8">
+        
+
         <!-- edit profile account details -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
@@ -249,7 +250,8 @@ session_start();
                     </ul>
                 </div>
             </section>
-        </div>
+
+       </div>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->

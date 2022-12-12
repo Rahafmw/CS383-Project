@@ -23,10 +23,29 @@
   <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
   <!-- Template Main CSS File -->
   <link href="assets/css/stylle.css" rel="stylesheet">
 
+  <script>
+  $(document).ready(function()
+  {
+    $("#show").click(function(){
+    $("form1").show(); 
+  });
+
+  });
+
+  $(document).ready(function()
+  {
+    $('.actions').click(function(){
+    $("form1").hide(); 
+  });
+
+  });
+
+  </script>
 </head>
 
 <body>
@@ -105,8 +124,8 @@
           <div class="p-4 container rounded bg-white">
                     <div class="row portfolio-info">
 
-                    <div class="col"><div class="row">
-        
+                    <div class="col">
+                      <div class="row">      
                             <div class="col-12 mt-4 px-5">
                             <h3>University Internship Program Registration</h3>
                             </div>
@@ -135,16 +154,32 @@
                             </ul>
                         </div>
 
-                        <div class="mt-2 pb-2 col-lg-12 col-md-12 text-center">
-                              <a href="#" class="team-btn align-middle">Apply</a>
-                            </div>
+                        <div class="mt-2 pb-2 col-lg-12 col-md-12 text-center" id="show">
+                              <a href="Apply.php" class="team-btn align-middle">Apply</a>
+                        </div>
                     </div>
                 </div>
 
         </div>
-
       </div>
     </section><!-- End Portfolio Details Section -->
+
+    <!----- code for pop up---------->
+  <form id="form1" style="display: none;">
+      <div class='card pop-up'>
+          <div class='header'>
+            Do you like blue?
+         </div>
+         <div class='content'>
+          
+         </div>
+         <div class='actions'>
+         <a class='nah' href='#'>Nah</a>
+         <a href='#'></a>
+         </div>
+      </div>
+    </form>
+    <!------ end pop up ------------->
 
   </main><!-- End #main -->
 

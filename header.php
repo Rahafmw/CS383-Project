@@ -46,16 +46,17 @@
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
           <li><a class="nav-link scrollto active" href="home.php">Home</a></li>
-          <li><a class="nav-link scrollto " href="training.php">Training</a></li>
-          <li><a class="nav-link scrollto" href="stdDashboard.php">Dashboard</a></li>
-          <li class="dropdown"><a href="#"><span>About</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
+         <li><a class="nav-link scrollto " href="training.php">Training</a></li>
+        <li><a class="nav-link scrollto" href="stdDashboard.php">Dashboard</a></li>
+        <li class="dropdown">
+          <a href="#"><span>About</span> <i class="bi bi-chevron-down"></i></a>
+          <ul>
               <li><a class="nav-link scrollto" href="home.php"> Who we are? </a></li>
               <li><a class="nav-link scrollto" href="home.php"> what they say about us?</a></li>
               <li><a class="nav-link scrollto" href="home.php">Reach to us!</a></li>
-            </ul>
-          <li><a class="nav-link scrollto" href="logout.php"> Log Out </a></li> 
-          </li>
+          </ul>
+        </li>
+        <li><a class="nav-link scrollto" href="logout.php"> Log Out </a></li> 
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -100,7 +101,6 @@
 else
 {
 ?>
- 
       <div class="logo me-auto">
         <h1><a href="home.html">Coop Finder</a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
@@ -108,8 +108,8 @@ else
       </div>
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a class="nav-link scrollto active" href="home.php">Home</a></li>
-          <li><a class="nav-link scrollto " href="training.php">Training</a></li>
+          <li><a class="nav-link scrollto active" href="home.php">Home</a></li>    
+            <li><a class="nav-link scrollto " href="training.php">Training</a></li>
           <li><a class="nav-link scrollto" href="stdDashboard.php">Dashboard</a></li>
           <li class="dropdown"><a href="#"><span>About</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
