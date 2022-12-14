@@ -30,7 +30,7 @@ session_start();
     </head>
 
     <body>
-         <?php include("header.php"); ?>
+         <?php include("StuHeader.html"); ?>
            <div id="page-top">
 
         <!-- Navigation-->

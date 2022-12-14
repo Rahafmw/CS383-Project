@@ -207,7 +207,18 @@ session_start();
 
             <!-- Posted Opportunities-->
             <section class="resume-section" id="Post">
-                `
+                `<?php
+
+                    if (isset($_GET['post_id'])){
+                        $id = $_GET['post_id'];
+                        $delete = mysqli_query($conn, "DELETE FROM `post` WHERE `post_id`='$id'");
+                    }
+                    $select = "SELECT * FROM `post`";
+                    $query = mysqli_query($conn,$select);
+                    $num = mysqli_num_rows($query);
+
+                    if($num>0){
+                        ?>
                 <div class="row">
                     <div class="col">
                     <!-- Page Heading -->
@@ -222,17 +233,7 @@ session_start();
                     </div>
                 </div>
                 </div>
-                <?php
-
-                if (isset($_GET['post_id'])){
-                    $id = $_GET['post_id'];
-                    $delete = mysqli_query($conn, "DELETE FROM `post` WHERE `post_id`='$id'");
-                }
-                $select = "SELECT * FROM `post`";
-                $query = mysqli_query($conn,$select);
-                $num = mysqli_num_rows($query);
-
-                if($num>0){
+                    <?php
                     while($result=mysqli_fetch_assoc($query)){
                         
                  ?>
@@ -262,11 +263,31 @@ session_start();
                    }
                 }
                 else
-                {
-                    echo "</div><h3 class='row offset-3'>No Date Found</h3>";
-                }
+                { ?>
+                    
+                        <div class="container rounded bg-white text-center">
+                        
+                    <div class="row p-5">
 
-                ?>
+                    <div class="d-flex justify-content-center">
+                        <img style="width: 200px;" src="https://static.vecteezy.com/system/resources/previews/012/181/008/original/document-data-file-not-found-concept-illustration-flat-design-eps10-modern-graphic-element-for-landing-page-empty-state-ui-infographic-icon-etc-vector.jpg">
+                    </div>
+                    
+                        <?php echo "<h3>No Date Found</h3>";?>
+                    <p>Create Your First Post By Clicking on This Button</p>
+
+                    <div class="col-12 d-flex justify-content-center pt-2">
+                    <a href="#NewPost" class="btn btn-primary" style="width: 28%;">
+                        <span class="icon text-white-50 px-2">
+                            <i class="text-white bi bi-plus-square"></i>
+                        </span>
+                        <span class="text">Post New Opportunity</span>
+                    </a></div>
+            
+            </div></div>
+            <?php } ?> <!--End of else condition-->
+
+
             </div>
                 
             </section>
@@ -368,7 +389,7 @@ session_start();
                                 <div class="col"><h1 class="h3 ml-2 text-gray-800">Recent Applicants Requests</h1>
                                     <p class="ml-2 text-xs">To See All Applicants Request Click on Full View</p></div>
                                 <div class="col text-right">
-                                    <a class="text-secondary Link-style" href="Org_DataTable.html"><i class="bi bi-fullscreen px-2"></i>Full view</a>
+                                    <a class="text-secondary Link-style" href="Org_DataTable.php"><i class="bi bi-fullscreen px-2"></i>Full view</a>
                                 </div>
                             </div>
 
@@ -380,35 +401,34 @@ session_start();
                                         <tr>
                                             <th>First Name</th>
                                             <th>Last Name</th>
-                                            <th>Email</th>
                                             <th>CV</th>
-                                            <th>Status</th>
+                                            <th>National ID</th>
+                                            <th>Transcript</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <?php
+                                        $select = "SELECT * FROM `applicant`LIMIT 3";
+                                        $query = mysqli_query($conn,$select);
+                                        $num = mysqli_num_rows($query);
+                    
+                                        if($num>0){
+                                            while($row=mysqli_fetch_assoc($query)){
+                                                $pdfURL_cv = '../uploads/'.$row["cv"];
+                                                $pdfURL_NationalId = '../uploads/'.$row["National_id"];
+                                                $pdfURL_Transcript = '../uploads/'.$row["Transcript"];
+                                        ?>
                                         <tr>
-                                            <td>Rahaf</td>
-                                            <td>Alweldi</td>
-                                            <td>3910322@stu.rcyci.edu.sa</td>
-                                            <td><a href="https://drive.google.com/file/d/19Hqp45NEskr8j72QyGWiJJGZFaJ_W6Bn/view" target="_blank">Rahaf_CV</td>
-                                            <td><div class="p-2 bg-warning text-white text-center" style="border-radius: 5px;">Waiting for Reply</div></td>
+                                            <td><?php echo $row['stu_fname'] ?></td>
+                                            <td><?php echo $row['stu_lname'] ?></td>
+                                            <td><a href="<?php echo $pdfURL_cv ?>" target="_blank"><?php echo $row['cv'] ?></td>
+                                            <td><a href="<?php echo $pdfURL_NationalId ?>" target="_blank"><?php echo $row['National_id'] ?></td>
+                                            <td><a href="<?php echo $pdfURL_Transcript ?>" target="_blank"><?php echo $row['Transcript'] ?></td>
                                         </tr>
-
-                                        <tr>
-                                            <td>Rahaf</td>
-                                            <td>Alweldi</td>
-                                            <td>3910322@stu.rcyci.edu.sa</td>
-                                            <td><a href="https://drive.google.com/file/d/19Hqp45NEskr8j72QyGWiJJGZFaJ_W6Bn/view" target="_blank">Rahaf_CV</td>
-                                            <td><div class="p-2 bg-success text-white text-center" style="border-radius: 5px;">Accepted</div></td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>Rahaf</td>
-                                            <td>Alweldi</td>
-                                            <td>3910322@stu.rcyci.edu.sa</td>
-                                            <td><a href="https://drive.google.com/file/d/19Hqp45NEskr8j72QyGWiJJGZFaJ_W6Bn/view" target="_blank">Rahaf_CV</td>
-                                            <td><div class="p-2 bg-danger text-white text-center" style="border-radius: 5px;">Declined</div></td>
-                                        </tr>
+                                        <?php
+                                            }
+                                        }
+                                        ?>
                                     </tbody>
                                 </table>
                             </div>
