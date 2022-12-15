@@ -27,9 +27,110 @@ session_start();
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
     </head>
+    <style>
+
+ section.resume-section {
+  display: flex;
+  align-items: center;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  max-width: 75rem;
+}
+section.resume-section .resume-section-content {
+  width: 100%;
+}
+
+section.Applicant-Table-section .Link-style{
+  cursor: pointer;
+  display: inline-flex;
+  font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 1.25;
+  margin: 0;
+  min-height: 3rem;
+  padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+  position: relative;
+  text-decoration: none;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  width: auto;
+}
+
+section.Applicant-Table-section .Link-style:hover{
+  color: rgba(0, 0, 0, 0.65);
+  transform: translateY(-1px);
+}
+
+@media (min-width: 768px) {
+  section.resume-section {
+    min-height: 100vh;
+  }
+}
+@media (min-width: 992px) {
+  section.resume-section {
+    padding-left: 3rem;
+    padding-right: 3rem;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+}
+
+<style type="text/css">
+body{margin-top:20px;
+background-color:#f2f6fc;
+color:#69707a;
+}
+.img-account-profile {
+    height: 10rem;
+}
+.rounded-circle {
+    border-radius: 50% !important;
+}
+.card {
+    box-shadow: 0 0.15rem 1.75rem 0 rgb(33 40 50 / 15%);
+}
+.card .card-header {
+    font-weight: 500;
+}
+.card-header:first-child {
+    border-radius: 0.35rem 0.35rem 0 0;
+}
+.card-header {
+    padding: 1rem 1.35rem;
+    margin-bottom: 0;
+    background-color: rgba(33, 40, 50, 0.03);
+    border-bottom: 1px solid rgba(33, 40, 50, 0.125);
+}
+.form-control, .dataTable-input {
+    display: block;
+    width: 100%;
+    padding: 0.875rem 1.125rem;
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1;
+    color: #69707a;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #c5ccd6;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0.35rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+    </style>
 
     <body>
         <?php
+<<<<<<< HEAD
     
     include("dbconnection.php");
 
@@ -66,27 +167,49 @@ session_start();
         if(array_key_exists('update_button', $_POST)) {
                     Update_Profile();
                 }
+=======
+
+        //When the form button is clicked 
+        if(array_key_exists('update_button', $_POST)) 
+        {
+            Update_Profile();
+         }
+>>>>>>> 4fe5b1aa365ee9e0816044daf006cc2fe4a54f5e
 
         //function to store the input data to the database 
         function Update_Profile() 
         {
         
+<<<<<<< HEAD
+=======
+        include("dbconnection.php");
+>>>>>>> 4fe5b1aa365ee9e0816044daf006cc2fe4a54f5e
         //if the connection is working   
         // Taking all 8 values from the form data(input)
         $Fname =  $_REQUEST['FirstName'];
         $Lname =  $_REQUEST['LastName'];
         $Email =  $_REQUEST['Email'];
         $Contact =  $_REQUEST['Phone'];
+<<<<<<< HEAD
+=======
+        $Location =  $_REQUEST['Location'];
+>>>>>>> 4fe5b1aa365ee9e0816044daf006cc2fe4a54f5e
         $Overview =  $_REQUEST['Overview'];
         $Birthday =  $_REQUEST['Birthday'];
         $Skill1 =  $_REQUEST['skill1'];
         $Skill2 =  $_REQUEST['skill2'];
         $Skill3 =  $_REQUEST['skill3'];
         $Skill4 =  $_REQUEST['skill4'];
+<<<<<<< HEAD
 
                 
         $sql = "UPDATE student
         set stu_fname= '$Fname', stu_lname= '$Lname', stu_email= '$Email', stu_contact= '$Contact', stu_description= '$Overview',stu_birthday= '$Birthday', stu_skill1= '$Skill1', stu_skill2= '$Skill2', stu_skill3= '$Skill3', stu_skill4= '$Skill4'
+=======
+                
+        $sql = "UPDATE student
+        set stu_fname= '$Fname', stu_lname= '$Lname', stu_email= '$Email', stu_contact= '$Contact', stu_place= '$Location', stu_description= '$Overview',stu_birthday= '$Birthday', stu_skill1= '$Skill1', stu_skill2= '$Skill2', stu_skill3= '$Skill3', stu_skill4= '$Skill4'
+>>>>>>> 4fe5b1aa365ee9e0816044daf006cc2fe4a54f5e
         WHERE stu_id='1'";
 
         if(mysqli_query($conn, $sql)){
@@ -102,7 +225,11 @@ session_start();
 
 ?>
 
+<<<<<<< HEAD
          <?php include("StuHeader.php"); ?>
+=======
+         <?php include("StuHeader.html"); ?>
+>>>>>>> 4fe5b1aa365ee9e0816044daf006cc2fe4a54f5e
            <div id="page-top">
 
              <?php   
@@ -115,14 +242,21 @@ session_start();
                 {
              foreach($result as $rows) 
              {
+<<<<<<< HEAD
                 $imgURL = 'uploads/'.$row["stu_pic"];
+=======
+>>>>>>> 4fe5b1aa365ee9e0816044daf006cc2fe4a54f5e
              ?>
 
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
             <a class="navbar-brand js-scroll-trigger" href="#page-top">
                 <span class="d-block d-lg-none"><?php echo $rows['stu_fname']; ?></span>
+<<<<<<< HEAD
                 <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="<?php echo $imgURL ?>" /></span>
+=======
+                <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="<?php echo $rows['stu_pic']; ?>" alt="..." /></span>
+>>>>>>> 4fe5b1aa365ee9e0816044daf006cc2fe4a54f5e
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
@@ -131,6 +265,7 @@ session_start();
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#education">Education</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#skills">Skills</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#awards">Awards</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#requests">Requests</a></li>
                 </ul>
             </div>
         </nav>
@@ -169,8 +304,14 @@ session_start();
                 <div class="card-header">Profile Picture</div>
                 <div class="card-body text-center">
                     <!-- Profile picture image-->
+<<<<<<< HEAD
                     <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="<?php echo $rows['stu_pic']; ?>" />
                     <input class="form-control" name="stu_pic" type="file">
+=======
+                    <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="<?php echo $rows['stu_pic']; ?>" alt="..." />
+                    <!-- Profile picture help block-->
+                    <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
+>>>>>>> 4fe5b1aa365ee9e0816044daf006cc2fe4a54f5e
                     <!-- Profile picture upload button-->
                     <div class="p-4"><button class="btn btn-primary" type="submit" name="update_pic">Upload new image</button></div>
                 </div>
@@ -183,6 +324,10 @@ session_start();
             <div class="card mb-4">
                 <div class="card-header">Account Details</div>
                 <div class="card-body">
+<<<<<<< HEAD
+=======
+                    <form method="post">
+>>>>>>> 4fe5b1aa365ee9e0816044daf006cc2fe4a54f5e
                         <!-- Form Row-->
                         <div class="row gx-3 mb-3">
                             <!-- Form Group (first name)-->
@@ -202,6 +347,10 @@ session_start();
                             <input class="form-control" name="Email" type="email" value="<?php echo $rows['stu_email'];?>">
                         </div>
                         <!-- Form Row-->
+                         <div class="mb-3">
+                            <label class="small mb-1">Place</label>
+                            <input class="form-control" name="Place" type="text" value="<?php echo $rows['stu_place'];?>">
+                        </div>
                         <div class="row gx-3 mb-3">
                             <!-- Form Group (phone number)-->
                             <div class="col-md-6">
@@ -227,11 +376,19 @@ session_start();
                             </div>
                              <div class="col-md-6">
                                 <label class="small mb-1">Skill 3</label>
+<<<<<<< HEAD
                                 <input class="form-control" name="skill3" type="text" value="<?php echo $rows['stu_skill3'];?>">
                             </div>
                              <div class="col-md-6">
                                 <label class="small mb-1">Skill 4</label>
                                 <input class="form-control" name="skill4" type="text" value="<?php echo $rows['stu_skill4'];?>">
+=======
+                                <input class="form-control" name="skill2" type="text" value="<?php echo $rows['stu_skill3'];?>">
+                            </div>
+                             <div class="col-md-6">
+                                <label class="small mb-1">Skill 4</label>
+                                <input class="form-control" name="skill2" type="text" value="<?php echo $rows['stu_skill4'];?>">
+>>>>>>> 4fe5b1aa365ee9e0816044daf006cc2fe4a54f5e
                             </div>
                         </div>
 
@@ -246,11 +403,19 @@ session_start();
             </div>
         </div>
     </div>
+<<<<<<< HEAD
     <?php
             }
           }
         }
       ?>
+=======
+<?php 
+      }
+    }
+  }
+?>
+>>>>>>> 4fe5b1aa365ee9e0816044daf006cc2fe4a54f5e
  </div>
   </section>
             <!-- Education-->
@@ -281,7 +446,25 @@ session_start();
             <section class="resume-section" id="skills">
                 <div class="resume-section-content">
                     <h2 class="mb-5">Skills</h2>
-                    <div class="subheading mb-3">Programming Languages & Tools</div>
+                    <ul class="fa-ul mb-0">
+                        <li>
+                            <span class="fa-li"><i class="fas fa-check"></i></span>
+                            <?php echo $rows['stu_skill1']; ?>
+                        </li>
+                        <li>
+                            <span class="fa-li"><i class="fas fa-check"></i></span>
+                            <?php echo $rows['stu_skill2']; ?>
+                        </li>
+                        <li>
+                            <span class="fa-li"><i class="fas fa-check"></i></span>
+                            <?php echo $rows['stu_skill3']; ?>
+                        </li>
+                        <li>
+                            <span class="fa-li"><i class="fas fa-check"></i></span>
+                            <?php echo $rows['stu_skill4']; ?>
+                        </li>
+                    </ul>
+                    <br>
                     <ul class="list-inline dev-icons">
                         <li class="list-inline-item"><i class="fab fa-html5"></i></li>
                         <li class="list-inline-item"><i class="fab fa-css3-alt"></i></li>
@@ -292,28 +475,6 @@ session_start();
                         <li class="list-inline-item"><i class="fab fa-sass"></i></li>
                         <li class="list-inline-item"><i class="fab fa-less"></i></li>
                         <li class="list-inline-item"><i class="fab fa-wordpress"></i></li>
-                        <li class="list-inline-item"><i class="fab fa-gulp"></i></li>
-                        <li class="list-inline-item"><i class="fab fa-grunt"></i></li>
-                        <li class="list-inline-item"><i class="fab fa-npm"></i></li>
-                    </ul>
-                    <div class="subheading mb-3">Workflow</div>
-                    <ul class="fa-ul mb-0">
-                        <li>
-                            <span class="fa-li"><i class="fas fa-check"></i></span>
-                            Mobile-First, Responsive Design
-                        </li>
-                        <li>
-                            <span class="fa-li"><i class="fas fa-check"></i></span>
-                            Cross Browser Testing & Debugging
-                        </li>
-                        <li>
-                            <span class="fa-li"><i class="fas fa-check"></i></span>
-                            Cross Functional Teams
-                        </li>
-                        <li>
-                            <span class="fa-li"><i class="fas fa-check"></i></span>
-                            Agile Development & Scrum
-                        </li>
                     </ul>
                 </div>
             </section>
@@ -354,6 +515,64 @@ session_start();
                     </ul>
                 </div>
             </section>
+<<<<<<< HEAD
+=======
+
+             <!-- the Prevous Request-->
+        <div id="requests">
+            <section class="resume-section Applicant-Table-section" id="Table">
+                <div class="resume-section-content">
+
+                    <!--Datatable of Applicants Request-->
+                    <div class="card mb-4">
+                        <div class="card-body">
+
+                            <!--Table Heading-->
+                            <div class="row mb-4">
+                                <div class="col"><h1 class="h3 ml-2 text-gray-800">
+                                Your recent requests</h1>
+                                <p> This table shows you all the request that you have been made </p>
+                                </div>
+                            </div>
+
+                            
+
+     <div class="table-responsive">
+         <table class="table" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+               <tr>
+                    <th>Orgnization name</th>
+                    <th>Status</th>
+                    </tr>
+            </thead>
+              <tbody>
+                 <?php
+                       $id = $_SESSION['userid'];
+                       $query = "SELECT * FROM applicant_previous_requests where id = '$id' ";
+                       $result = mysqli_query($conn , $query);
+
+                       while ($rows = mysqli_fetch_assoc($result)) 
+                       {
+                   ?>
+                    <tr>
+                    <td><?php echo $rows['org_name'] ?></td>
+                    <td><?php echo $rows['status'] ?></td>
+                    <td><?php echo date("Y/m/d") ?> </td>
+                   </tr>
+                   <?php
+                        }
+
+                    ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+>>>>>>> 4fe5b1aa365ee9e0816044daf006cc2fe4a54f5e
         </div>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>

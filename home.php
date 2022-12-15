@@ -28,10 +28,49 @@ session_start();
 
   <!-- Template Main CSS File -->
   <link href="assets/css/stylle.css" rel="stylesheet">
+  <script src="assets/js/showhide.js"></script>
 
+<style>
+  .reviewbtn[type=submit] {
+  background: #009cea;
+  border: 0;
+  padding: 10px 24px;
+  color: #fff;
+  transition: 0.4s;
+  border-radius: 4px;
+}
+
+.reviewbtn[type=submit]:hover {
+  background: #1eb4ff;
+}
+
+.revieForm{
+  display: none;
+}
+
+.review-form {
+  width: 100%;
+  padding: 30px;
+  background: #fff;
+  border: 2px solid #e9ecee;
+  border-radius: 4px;
+}
+
+.review-form {
+  padding-bottom: 8px;
+}
+
+.display_beside{
+  float:left;
+  width: 400px !important;
+
+}
+
+</style>
 </head>
 
 <body>
+
 <?php include("header.php"); ?>
 
   <!-- ======= Hero Section (At the top of the page) ======= -->
@@ -60,7 +99,7 @@ session_start();
     </div>
   </section> <!-- End Hero -->
 
-  <!-- ======= About Us ======= -->
+  <!-- ===================== About Us ===================== -->
     <section id="services" class="services section-bg">
       <div class="container">
 
@@ -96,18 +135,18 @@ session_start();
         </div>
 
       </div>
-    </section><!-- End About  -->
+    </section>
 
   <main id="main">
 
-    <!-- ======= CV Section ======= -->
+    <!-- =====================   chat Section ========================= -->
     <section id="cta" class="cta">
       <div class="container">
 
         <div class="row" data-aos="zoom-in">
           <div class="col-lg-9 text-center text-lg-start">
             <h3>CO-Finder Users live chat!</h3>
-            <p>Explore </p>
+            <p>start the live chat now.</p>
           </div>
           <div class="col-lg-3 cta-btn-container text-center">
             <a class="cta-btn align-middle" href="ChatApp/index.php">Start the live chat!</a> <!-- not workin yet -->
@@ -115,9 +154,9 @@ session_start();
         </div>
 
       </div>
-    </section><!-- End CV Section -->
+    </section>
 
-    <!-- ======= Training section ======= -->
+    <!-- =====================  Training section ===================== -->
     <section id="team" class="team">
       <div class="container">
 
@@ -178,130 +217,130 @@ session_start();
           </div>>
  
         </div>
+
         <div class="row">
-        <div class="mt-2 pt-2 col-lg-12 col-md-12 text-center">
-           <a href="training.php" class="team-btn align-middle">See More</a>
+         <div class="text-center">
+            <form action="training.php">
+              <button type="submit" class="reviewbtn">See More</button>
+            </form>
+          </div>
         </div>
-        </div>
-
       </div>
-    </section><!-- End Training -->
+    </section>
 
-    <!-- =======  What they say about us section ======= -->
+    <!-- ====================  What they say about us section ============== -->
+
     <section id="testimonials" class="testimonials">
       <div class="container">
-
         <div class="section-title" data-aos="fade-up">
           <h2 class="text-uppercase">What people say about us</h2>
         </div>
 
         <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
-          <div class="swiper-wrapper">
-           
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                   One of the best helpful website that I used to apply for a training program.
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-                <img src="assets/img/testimonials/1.png" class="testimonial-img" alt="">
-                <h3>Lujain Khalid</h3>
-                <h4>CS Student at YIC</h4>
-              </div>
-            </div>
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  I really take an advantgaes from this website.........................
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-                <img src="assets/img/testimonials/women2.png" class="testimonial-img" alt="">
-                <h3>Lama Mohammed</h3>
-                <h4>HR Student at YIC</h4>
-              </div>
-            </div>
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                   I really take an advantgae from this website.........................
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-                <img src="assets/img/testimonials/man1.png" class="testimonial-img" alt="">
-                <h3>Ahmed Saleh</h3>
-                <h4>CE Student at YIC</h4>
-              </div>
-            </div>
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                   I really take an advantgae from this website.........................
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-                <img src="assets/img/testimonials/man2.png" class="testimonial-img" alt="">
-                <h3>Mohammed Ahmed</h3>
-                <h4>MIS student</h4>
-              </div>
-            </div>
-
-          </div>
+           <div class="swiper-wrapper">         
+             <div class="testimonial-item ">
+          <?php 
+            include("dbconnection.php");
+            $query = "SELECT * FROM review";
+            $result = mysqli_query($conn , $query);
+            if(!$result || mysqli_num_rows($result) >  0)
+             {
+                if (is_iterable($result))
+                  {
+                    foreach($result as $row) 
+                    {
+                    ?>
+                    <div class="display_beside col-lg-4 mt-5 ml-2">
+                        <p>
+                           <i class="bx bxs-quote-alt-left quote-icon-left "></i>
+                           <?= $row['reviewer_msg']; ?> 
+                           <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                        </p>
+                        <?php 
+                        if ($row['reviewer_img']=="F")
+                         { ?>
+                        <img src="assets/img/testimonials/1.png" class="testimonial-img" alt="">
+                         <?php
+                         }
+                         else {
+                          ?>
+                        <img src="assets/img/testimonials/man1.png" class="testimonial-img" alt="">
+                        <?php
+                         }
+                         ?>
+                        <h3><?= $row['reviewer_name']; ?></h3>
+                        <h4><?= $row['reviewer_job']; ?></h4>
+                    </div>
+                    <?php
+                    }
+                  }
+              }
+            ?>
+        </div>
+        </div>
           <div class="swiper-pagination"></div>
         </div>
-
       </div>
-    </section><!-- End -->
+    </section>
+    <div class="row">
+      <div class="text-center">
+        <button onclick="w3_show()" type="submit" class="reviewbtn">Add a Review</button>
+      </div>
+    </div><br><br>
 
-   <!-- ======= Contact Section ======= -->
+   <!-- ============== review form section ============== -->
     <section id="contact" class="contact section-bg">
-      <div class="container">
-
+      <div class="container revieForm" id="demo">
         <div class="section-title" data-aos="fade-up">
-          <h2 class="text-uppercase">Contact Us</h2>
+          <h2 class="text-uppercase">Review Form</h2>
         </div>
 
         <div class="row">
+        <div class="col-lg mt-5 mt-lg-0 d-flex align-items-stretch" data-aos="fade-left">
+        <form method="post" action="review_action.php" class="review-form">
 
-          <div class="col-lg mt-5 mt-lg-0 d-flex align-items-stretch" data-aos="fade-left">
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
-              <div class="row">
-                <div class="form-group col-md-6">
+            <div class="row">
+                <div class="form-group col-md-6 col-lg-6">
                   <label for="name">Your Name</label>
                   <input type="text" name="name" class="form-control" id="name" required>
                 </div>
-                <div class="form-group col-md-6 mt-3 mt-md-0">
-                  <label for="name">Your Email</label>
-                  <input type="email" class="form-control" name="email" id="email" required>
-                </div>
-              </div>
-              <div class="form-group mt-3">
-                <label for="name">Subject</label>
+
+              <div class="form-group mt-3 mt-md-0 col-md-6 col-lg-6">
+                <label for="name">Your Job</label>
                 <input type="text" class="form-control" name="subject" id="subject" required>
-              </div>
+              </div> 
+            </div>
+
               <div class="form-group mt-3">
                 <label for="name">Message</label>
                 <textarea class="form-control" name="message" rows="10" required></textarea>
               </div>
-              <div class="my-3">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
+
+              <div class="form-group mt-3 col-lg-6">
+              <p> Gender </p>
+              <select name="taskOption"> 
+                   <option value="1">Male</option>
+                   <option value="2">Female</option>
+              </select>
+              </div> 
+
+            <div class="mt-3 row">
+              <div class="text-center ">
+                <button name= "submit" type="submit" class="reviewbtn">Add</button>
               </div>
-              <div class="text-center"><button type="submit">Send Message</button></div>
-            </form>
+            </div>
+
+          </form>
           </div>
 
         </div>
 
-      </div>
-    </section><!-- End Contact Section -->
+        </div>
+       </section><!-- End Contact Section -->
 
 </main>
+ <!-- ============== footer ============== -->
+
 <?php include("footer.html"); ?>
 
 <!-- Vendor JS Files -->
@@ -314,6 +353,6 @@ session_start();
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+ 
 </body>
-
 </html>

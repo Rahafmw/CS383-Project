@@ -902,11 +902,14 @@ section {
 .testimonials .testimonials-carousel,
 .testimonials .testimonials-slider {
   overflow: hidden;
+   float:left;
 }
+
 
 .testimonials .testimonial-item {
   box-sizing: content-box;
-  min-height: 320px;
+  min-height: 350px;
+  float:left;
 }
 
 .testimonials .testimonial-item .testimonial-img {
@@ -916,6 +919,7 @@ section {
   position: relative;
   z-index: 2;
   border: 6px solid #fff;
+
 }
 
 .testimonials .testimonial-item h3 {
@@ -1322,74 +1326,8 @@ section {
 /*--------------------------------------------------------------
 # Contact
 --------------------------------------------------------------*/
-.contact .info {
-  padding: 30px;
-  background: #fff;
-  width: 100%;
-  border: 2px solid #e9ecee;
-  border-radius: 4px;
-}
 
-.contact .info i {
-  font-size: 20px;
-  color: #009cea;
-  float: left;
-  width: 44px;
-  height: 44px;
-  background: #f2f4f5;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50px;
-  transition: all 0.3s ease-in-out;
-}
-
-.contact .info h4 {
-  padding: 0 0 0 60px;
-  font-size: 20px;
-  font-weight: 600;
-  margin-bottom: 5px;
-  color: #364146;
-}
-
-.contact .info p {
-  padding: 0 0 10px 60px;
-  margin-bottom: 20px;
-  font-size: 14px;
-  color: #627680;
-}
-
-.contact .info .social-links {
-  padding-left: 60px;
-}
-
-.contact .info .social-links a {
-  font-size: 18px;
-  display: inline-block;
-  background: #333;
-  color: #fff;
-  line-height: 1;
-  padding: 8px 0;
-  border-radius: 50%;
-  text-align: center;
-  width: 36px;
-  height: 36px;
-  transition: 0.3s;
-  margin-right: 10px;
-}
-
-.contact .info .social-links a:hover {
-  background: #009cea;
-  color: #fff;
-}
-
-.contact .info .email:hover i,
-.contact .info .address:hover i,
-.contact .info .phone:hover i {
-  background: #009cea;
-  color: #fff;
-}
-
+/* revie fore */
 .contact .php-email-form {
   width: 100%;
   padding: 30px;
@@ -1459,6 +1397,15 @@ section {
   padding: 10px 12px;
 }
 
+.reviewbtn[type=submit] {
+  background: #009cea;
+  border: 0;
+  padding: 10px 24px;
+  color: #fff;
+  transition: 0.4s;
+  border-radius: 4px;
+}
+
 .contact .php-email-form button[type=submit] {
   background: #009cea;
   border: 0;
@@ -1472,25 +1419,6 @@ section {
   background: #1eb4ff;
 }
 
-@-webkit-keyframes animate-loading {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes animate-loading {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
-}
 
 /*--------------------------------------------------------------
 # Breadcrumbs

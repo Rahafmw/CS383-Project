@@ -93,29 +93,35 @@ session_start();
 
           <div class="col-lg-4">
             <div class="portfolio-info">
-            <h3><span class="text-primary">Aramco</span>, Energy Company</h3>
+            <h3><span class="text-primary"><?php echo $rows['org_name']; ?></span>, <?php echo $rows['org_subtype']; ?></h3>
               <ul>
-                <li><strong>Location:</strong> Dhahran, Saudi Arabia</li>
-                <li><strong>Overview:</strong> We are one of the world's largest integrated energy and chemicals companies, creating value across the hydrocarbon chain, and delivering societal and economic benefits to people and communities around the globe who rely on the vital energy we supply.</li>
+                <li><strong>Location:</strong> <?php echo $rows['org_place'];?> </li>
+                <li><strong>Overview:</strong> <?php echo $rows['org_description']; ?></li>
                 <div class="row header-social-links align-items-center pt-4">
                 <li class="col"><strong>Social media:</strong>
-                  <a href="#" class="col linkedin"><i class="bi bi-linkedin"></i></a>
-                  <a href="#" class="col twitter"><i class="bi bi-twitter"></i></a>
-                  <a href="#" class="col twitter"><i class="bi bi-facebook"></i></a>
-                  <a href="#" class="col linkedin"><i class="bi bi-globe2"></i></a>
+                  <a href="<?php echo $rows['org_linkedin']; ?>" class="col linkedin"><i class="bi bi-linkedin"></i></a>
+                  <a href="<?php echo $rows['org_twitter']; ?>" class="col twitter"><i class="bi bi-twitter"></i></a>
+                  <a href="<?php echo $rows['org_facebook']; ?>" class="col twitter"><i class="bi bi-facebook"></i></a>
+                  <a href="<?php echo $rows['org_website']; ?>" class="col linkedin"><i class="bi bi-globe2"></i></a>
                 </div></li>
               </ul>
             </div>
 
+
             <div class="portfolio-info">
               <h3>Training Information</h3>
               <ul>
+<<<<<<< HEAD
                 <li><strong>Registration Start Date: </strong><?php echo $result['post_sdate'] ?></li>
                 <li><strong>Registration End Date: </strong><?php echo $result['post_edate'] ?></li>
                 <li><strong>Important Dates: </strong><?php echo $result['post_impdate'] ?></li>
+=======
+                <li><strong>Registration Start Date:</strong> <?php echo $result['post_sdate'] ?></li>
+                <li><strong>Registration End Date:</strong> <?php echo $result['post_edate'] ?> </li>
+                <li><strong>Important Dates:</strong> <?php echo $result['post_impdate'] ?> </li>
+>>>>>>> 4fe5b1aa365ee9e0816044daf006cc2fe4a54f5e
               </ul>
             </div>
-
           </div>
           <!------Training program details-------->
           <div class="p-4 container rounded bg-white">
@@ -139,6 +145,7 @@ session_start();
 
         </div>
       </div>
+<<<<<<< HEAD
       <?php
        }
       }
@@ -158,7 +165,12 @@ session_start();
             
             </div></div>
             <?php } ?> <!--End of else condition-->
+=======
+
+>>>>>>> 4fe5b1aa365ee9e0816044daf006cc2fe4a54f5e
     </section><!-- End Portfolio Details Section -->
+
+
 
     <!----- code for pop up---------->
   <form id="form1" style="display: none;">
