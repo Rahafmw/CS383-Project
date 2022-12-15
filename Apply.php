@@ -1,3 +1,11 @@
+<?php
+session_start();
+   if(!isset($_SESSION['userid'])) // If session is not set then redirect to Login Page
+   {
+     header("Location:login.html");  
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -15,10 +23,10 @@
     </head>
 
     <body>
-   <?php include("header.php"); 
-   include("dbconnection.php");
- 
+   <?php include("header.php");  
+
       if (isset($_POST['File_submit'])) {
+         include("dbconnection.php");
 
         $fname =  $_REQUEST['fname'];
         $lname =  $_REQUEST['lname'];
@@ -38,6 +46,12 @@
 
         $sql = "INSERT INTO applicant (stu_fname, stu_lname, cv, National_id, Transcript) VALUES('$fname','$lname', '$file_name_cv', '$file_name_national_id', '$file_name_Transcript')";
 
+        $id = $_SESSION['userid'];
+     
+      // Performing insert query execution so this infor will be displaying in the student dahsboard
+      $sql = "INSERT INTO applicant_previous_requests (id, org_name, status) VALUES ('$id', 'Saudi Arabian Oil Company Aramco','Completed' )";
+
+
         if(mysqli_query($conn, $sql)){
           header('Location: training-details.php');
         
@@ -49,10 +63,9 @@
       mysqli_close($conn);
 
         }
-    ?>
-
-
    
+  ?>
+
 
    <div class="container"> <br><br><br><br>
      <div class="row">
