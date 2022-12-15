@@ -1,3 +1,11 @@
+<?php
+session_start();
+   if(!isset($_SESSION['userid'])) // If session is not set then redirect to Login Page
+   {
+     header("Location:login.html");  
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,31 +36,12 @@
   <!-- Template Main CSS File -->
   <link href="assets/css/stylle.css" rel="stylesheet">
 
-  <script>
-  $(document).ready(function()
-  {
-    $("#show").click(function(){
-    $("form1").show(); 
-  });
-
-  });
-
-  $(document).ready(function()
-  {
-    $('.actions').click(function(){
-    $("form1").hide(); 
-  });
-
-  });
-
   </script>
 </head>
 
 <body>
-
-<!-- ======= Header ======= -->
+  <!-- ======= Header ======= -->
   <?php include("header.php"); ?>
-  <!-- End Header -->
 
   <main id="main">
 
@@ -71,6 +60,15 @@
 
     <!-- ======= Portfolio Details Section ======= -->
     <section id="portfolio-details" class="portfolio-details">
+    <?php
+                  include("dbconnection.php");
+                  $select = "SELECT * FROM `post`";
+                  $query = mysqli_query($conn,$select);
+                  $num = mysqli_num_rows($query);
+                   if($num>0){
+                    while($result=mysqli_fetch_assoc($query)){
+                   
+          ?>
       <div class="container">
 
         <div class="row gy-4">
@@ -112,14 +110,13 @@
             <div class="portfolio-info">
               <h3>Training Information</h3>
               <ul>
-                <li><strong>Registration Start Date:</strong> November 07, 2022  at 8:00 AM</li>
-                <li><strong>Registration End Date:</strong> November 15, 2022  at 4:00 PM </li>
-                <li><strong>Important Dates</strong>: The first day of the training for the program starts on: December 25, 2022 & January 16, 2023. </li>
+                <li><strong>Registration Start Date: </strong><?php echo $result['post_sdate'] ?></li>
+                <li><strong>Registration End Date: </strong><?php echo $result['post_edate'] ?></li>
+                <li><strong>Important Dates: </strong><?php echo $result['post_impdate'] ?></li>
               </ul>
             </div>
 
           </div>
-
           <!------Training program details-------->
           <div class="p-4 container rounded bg-white">
                     <div class="row portfolio-info">
@@ -127,31 +124,11 @@
                     <div class="col">
                       <div class="row">      
                             <div class="col-12 mt-4 px-5">
-                            <h3>University Internship Program Registration</h3>
+                            <h3><?php echo $result['post_title'] ?></h3>
                             </div>
 
                         <div class="p-5">
-
-                            <b>The Goal:</b>
-                            <p>Saudi Aramco provides internship opportunities for a limited number of outstanding Saudi diploma students studying in industrial/technical colleges and the Institute of Public Administration. This program aims to help participants gain practical experience and fulfill graduation requirements from their colleges or institutes. At the end of the program, the participants are evaluated to determine their total marks for the training hours required by the college or institute.</p>
-
-                            <b>Eligibility:</b>
-                            <p>Applicants eligible to apply for the program are those required by their universities to undergo practical training prior to graduation. They are considered for the program based on the availability of slots and the following criteria:</p>
-                            <p>Applicants must have a minimum cumulative GPA of 2.00 out of 4 for technical majors and 2.50 out of 4 for nontechnical majors or equivalent. Priority is given to candidates with the highest GPAs.</p>
-                            <ul>
-                                <li>The duration of the training required by the school must be at least 8 weeks.</li>
-                                <li>Applicant must not have graduated from his/her university.</li>
-                                <li>Applicants must complete the training internship in full.</li>
-                                <li>Accepted students must not be enrolled in university classes/modules during their training period.</li>
-                            </ul>
-
-                            <b>Required Documents</b>
-                            <p>Candidates applying for the program need to provide the following documents:</p>
-                            <ul>
-                                <li>A copy of the Government ID.</li>
-                                <li>A copy of the latest official transcript.</li>
-                                <li>A letter from the university that shows the objectives and the length of the internship</li>
-                            </ul>
+                        <?php echo $result['post_info'] ?>
                         </div>
 
                         <div class="mt-2 pb-2 col-lg-12 col-md-12 text-center" id="show">
@@ -162,6 +139,25 @@
 
         </div>
       </div>
+      <?php
+       }
+      }
+         else
+                { ?>
+                    
+                        <div class="container rounded bg-white text-center">
+                        
+                    <div class="row p-5">
+
+                    <div class="d-flex justify-content-center">
+                        <img style="width: 200px;" src="https://static.vecteezy.com/system/resources/previews/012/181/008/original/document-data-file-not-found-concept-illustration-flat-design-eps10-modern-graphic-element-for-landing-page-empty-state-ui-infographic-icon-etc-vector.jpg">
+                    </div>
+                    
+                        <?php echo "<h3>No Date Found</h3>";?>
+                    <p>No opportunities found from Aramco</p>
+            
+            </div></div>
+            <?php } ?> <!--End of else condition-->
     </section><!-- End Portfolio Details Section -->
 
     <!----- code for pop up---------->
